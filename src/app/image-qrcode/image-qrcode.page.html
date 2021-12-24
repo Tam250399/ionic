@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" shape="round" color="light" routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ data?.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" shape="round" color="light">
+        <ion-icon slot="icon-only" name="share-outline" color="primary"></ion-icon>
+      </ion-button>
+      <ion-button fill="solid" shape="round" color="light">
+        <ion-icon slot="icon-only" name="search-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+ <!-- Fallback for iOS PWA -->
+  <input #fileinput type="file" accept="image/*;capture=camera" hidden (change)="handleFile($event.target.files)">
+
+  <ion-button expand="full" (click)="captureImage()" color="warning">
+    <ion-icon slot="start" name="image"></ion-icon>
+    Chọn ảnh để quét
+  </ion-button>
+
+  <video #video [hidden]="!scanActive" width="100%"></video>
+
+  <!-- Used to render the camera stream images -->
+  <canvas #canvas hidden></canvas>
+    <ion-card-title class="" style="text-align:center;font-size: 22px;padding-top: 15px;"> Mã QR Code</ion-card-title>
+    <ion-grid class="ion-margin">
+      <ion-row>
+        <ion-col size="2">STT</ion-col>
+        <ion-col size="7">Mã qr-code</ion-col>
+        <ion-col size="3">Tác vụ</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let scanner of newData; index as i">
+        <ion-col size="2">{{i + 1}}</ion-col>
+        <ion-col size="7">{{scanner}}</ion-col>
+        <ion-col size="3">
+          <ion-icon name="close-outline" (click)="delete(scanner)" color="danger" style="height: 20px;width: 21px;">
+          </ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          Có : {{newData.length}} bản ghi
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>
+
+
+
+<!-- 
+<ion-fab horizontal="start" vertical="bottom" slot="fixed">
+  <ion-fab-button color="light" routerLink="/home">
+    <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab> -->

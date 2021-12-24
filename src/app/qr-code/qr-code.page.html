@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" shape="round" color="light" routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button fill="solid" shape="round" color="light">
+        <ion-icon slot="icon-only" name="share-outline" color="primary"></ion-icon>
+      </ion-button>
+      <ion-button fill="solid" shape="round" color="light">
+        <ion-icon slot="icon-only" name="search-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="video-container">
+    <div style="position:relative;">
+      <ion-icon [hidden]="!scanActive" (click)="stopScan()" name="close-circle-outline"
+        style="position: absolute;top: 5px;right: 5px;color: red;font-size: 23px;z-index:100;"></ion-icon>
+    </div>
+    <video #video [hidden]="!scanActive" width="100%"> </video>
+  </div>
+  <canvas #canvas hidden></canvas>
+
+  <ion-button expand="full" (click)="start()" [hidden]="!scanActive" >
+    <ion-icon slot="start" name="qr-code-outline"></ion-icon>
+    Bấm để quét
+  </ion-button>
+
+
+  <ion-list>
+    <div class="contain_div">
+    <ion-item *ngFor="let scanner of newData">
+      <ion-avatar slot="start">
+        <img src="/assets/image/icons8-link-24.png">
+      </ion-avatar>
+      <ion-label>
+        <div class="col_div">
+        <a (click)="OpenDetail()">{{scanner.data}}</a>
+        <p>{{scanner.timeScan}}</p>
+        </div>
+      </ion-label>
+      <ion-col size="2">
+        <ion-icon name="close-outline" (click)="delete(scanner)" color="danger" style="height: 20px;width: 21px;">
+        </ion-icon>
+        </ion-col>
+    </ion-item>
+  </div>
+  </ion-list>
+
+
+  <!-- <ion-button size="3"  color="success" onclick="ToSend()" *ngIf="!scanActive">
+    <ion-icon slot="start" name="send"></ion-icon>
+      Gửi dữ liệu
+  </ion-button> -->
+
+</ion-content>
+
+
+<!-- 
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="account" routerLink="/">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Trang chủ</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="contact" routerLink="/qr-code">
+          <ion-icon name="scan"></ion-icon>
+          <ion-label>Quét mã</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="settings" routerLink="/list">
+          <ion-icon name="settings"></ion-icon>
+          <ion-label>Cài đặt</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+</ion-footer> -->
+

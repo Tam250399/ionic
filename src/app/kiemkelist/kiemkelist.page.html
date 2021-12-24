@@ -1,0 +1,29 @@
+
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" shape="round" color="light" routerLink="/qr-code">
+        <ion-icon slot="icon-only" name="arrow-back" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Thông tin kiểm kê</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+
+  <ion-card *ngIf="data" >
+    <ion-card-content >
+      <b>Mã đơn vị :</b><span>{{data.MaDonVi}}</span><br />
+      <b>Tên đơn vị : </b><span>{{data.TenDonVi}}</span><br />
+      <b>Bộ phận-phòng ban : </b><span>{{data.TenPhongBan}}</span><br />
+      <b>Đại diện phòng ban : </b><span>{{data.DaiDienPhongBan}}</span>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-button expand="full"  color="success" (click)="StartKiemKeMaTaiSan()" *ngIf="!scanActive">
+    <ion-icon  name="arrow-forward-outline"></ion-icon>
+      Bắt đầu kiểm kê mã tài sản
+  </ion-button>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-button fill="solid" shape="round" color="light" routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ data?.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" shape="round" color="light">
+        <ion-icon slot="icon-only" name="share-outline" color="primary"></ion-icon>
+      </ion-button>
+      <ion-button fill="solid" shape="round" color="light">
+        <ion-icon slot="icon-only" name="search-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content> 
+  <ion-item>
+    <ion-input [(ngModel)]="mataisan" placeholder="Nhập mã tài sản..">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input [(ngModel)]="makiemke" placeholder="Nhập mã kiểm kê..">
+    </ion-input>
+  </ion-item>
+ <ion-button expand="block" (click)="Search()">Tìm kiếm</ion-button>
+ 
+ 
+ <ion-card >
+   <!-- <ion-card-content>
+     <b>Loại tài sản id : </b><span>{{newData.LOAI_TAI_SAN_ID}}</span><hr />
+     <b>Mã : </b><span>{{newData.MA}}</span><hr />
+     <b>Tên : </b><span>{{newData.TEN}}</span>
+   </ion-card-content> -->
+ 
+ </ion-card>
+ </ion-content>
+ 

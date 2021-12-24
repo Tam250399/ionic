@@ -1,0 +1,38 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Mã Tài Sản :</ion-label>
+        <ion-input >{{passedId.MA}} </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tên Tài Sản :</ion-label>
+        <ion-input>{{passedId.TEN}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Trạng thái:</ion-label>
+        <ion-select name="TrangThai" [(ngModel)]="TrangThai" >
+          <ion-select-option value="2">Chưa sử dụng</ion-select-option>
+          <ion-select-option value="1">Đang sử dụng</ion-select-option>
+          <ion-select-option value="3">Hỏng,chờ sử lý</ion-select-option>
+          <ion-select-option value="4">Thiếu</ion-select-option>
+          <ion-select-option value="5">Thừa</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Nội dung:</ion-label>
+        <ion-textarea name="GhiChu"  type="text" [(ngModel)]="GhiChu" ></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <ion-button expand="full" class="btn btn-success" (click)="AddMaTaiSan()" >Lưu dữ liệu</ion-button>
+
+
+
+</ion-content>
